@@ -26,10 +26,12 @@ public class UserInterface {
 
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
-            System.out.println("");
+                        
             if (command.equals("list")) {
+                System.out.println("");
                 recipeRegister.printRegister();
             }
+            
             if (command.equals("stop")) {
                 break;
             }
@@ -37,7 +39,9 @@ public class UserInterface {
             if (command.equals("find name")) {
                 System.out.print("Searched word: ");
                 String searchedWord = scanner.nextLine();
-
+                System.out.println("");
+                System.out.println("Recipes:");
+                recipeRegister.findByName(searchedWord);
             }
         }
     }

@@ -31,10 +31,16 @@ public class RecipeRegister {
     }
     
     public void printRegister() {
-        for (int i = 0; i < recipes.size(); i++) {
-            System.out.println(recipes.get(i));
+        for (String recipe : recipes) {
+            System.out.println(recipe);
         }
     }
     
-    
+    public void findByName(String userInput) {
+        for (String recipe : recipes) {
+            if (recipe.contains(userInput)) {
+                System.out.println(recipe);
+            }
+        }
+    }
 }
