@@ -1,12 +1,13 @@
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class RecipeRegister {
-    private ArrayList<String> recipes;
+    private HashMap<String, Integer> recipes;
     
     public RecipeRegister() {
-        recipes = new ArrayList<>();
+        this.recipes = new HashMap<>();
     }
     
     public void buildRegister(String fileName) {
@@ -21,26 +22,32 @@ public class RecipeRegister {
             System.out.println("Error");
         }
         
-        // Puts each recipe into it's own index in a new ArrayList
-        this.recipes.add(rows.get(0) + ", cooking time: " + rows.get(1));
+        // Puts each recipe into Hashmap<Recipe name, cooking time>
+        this.recipes.put(rows.get(0), Integer.valueOf(rows.get(1)));
         for (int i = 0; i < rows.size(); i++) {
             if (rows.get(i).equals("")) {
-                this.recipes.add(rows.get(i + 1) + ", cooking time: " + rows.get(i + 2));
+                this.recipes.put(rows.get(i + 1), Integer.valueOf(rows.get(i + 2)));
             }
         }
     }
     
     public void printRegister() {
-        for (String recipe : recipes) {
-            System.out.println(recipe);
+        for (String dish : recipes.keySet()) {
+            printDish(dish);
         }
     }
     
     public void findByName(String userInput) {
-        for (String recipe : recipes) {
-            if (recipe.contains(userInput)) {
-                System.out.println(recipe);
+        for (String dish : recipes.keySet()) {
+            if (dish.contains(userInput)) {
+                printDish(dish);
             }
         }
     }
+    
+    public void printDish(String dish) {
+        System.out.println(dish + ", cooking time: " + recipes.get(dish));
+    }
+    
+    
 }
