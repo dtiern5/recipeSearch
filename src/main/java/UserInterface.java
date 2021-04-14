@@ -21,9 +21,10 @@ public class UserInterface {
             System.out.println("stop - stops the program");
             System.out.println("find name - searches recipes by name");
             System.out.println("find cooking time - searches recipes by cooking time");
-            System.out.println("");
+            
             
         while (true) {
+            System.out.println("");
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
             
@@ -47,6 +48,9 @@ public class UserInterface {
             if (command.equals("find cooking time")) {
                 System.out.print("Max cooking time: ");
                 int userCookingTime = Integer.valueOf(scanner.nextLine());
+                System.out.println("");
+                System.out.println("Recipes:");
+                recipeRegister.findByMaxTime(userCookingTime);
                 
             }
         }

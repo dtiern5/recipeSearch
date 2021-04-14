@@ -45,6 +45,14 @@ public class RecipeRegister {
         }
     }
     
+    public void findByMaxTime(int max) {
+        for (String dish : recipes.keySet()) {
+            if (recipes.get(dish) <= max) {
+                printDish(dish);
+            }
+        }
+    }
+    
     public void printDish(String dish) {
         System.out.println(dish + ", cooking time: " + recipes.get(dish));
     }
